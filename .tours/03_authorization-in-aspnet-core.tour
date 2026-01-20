@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "03_Authorization-in-ASP.NET Core",
+  "steps": [
+    {
+      "title": "Goal",
+      "description": "How to Enfore practice control in our backend using Authorization features of .Net Core\n\n\n- The need for authorization\n- Require authorization in ASP.NET Core\n- Role-based authorization\n- Claims-based authorization\n- Policy-based authorization\n- Authorization by default\n- Anonymous access\n- Resource-based authorization\n"
+    }
+  ],
+  "ref": "Notes"
+}

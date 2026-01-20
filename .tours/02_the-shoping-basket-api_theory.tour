@@ -1,6 +1,119 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "02_The-Shoping-Basket-API_Theory",
-  "steps": [],
+  "steps": [
+    {
+      "title": "Purpuse",
+      "description": "We want to explain our API functionality to help us dive into authorization .\n\n\n- Define the Shopping Basket data model \n- Implement the Upsert Basket feature \n- Implement the Get Basket Feature "
+    },
+    {
+      "title": "Section 1",
+      "description": "Section : Adding the Shopping Basket Data model "
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.01/src/GameStore.Api/Models/BasketItem.cs",
+      "description": "Adding a new Model That will represent an item in the Basket .",
+      "line": 3
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.01/src/GameStore.Api/Models/CustomerBasket.cs",
+      "description": "This Model will represent all the items the user will add to the Basket ",
+      "line": 3
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.01/src/GameStore.Api/Data/GameStoreContext.cs",
+      "description": "Add the new Models to the DbContext :\n\n```csharp\n    public DbSet<CustomerBasket> Baskets => Set<CustomerBasket>();\n\n    public DbSet<BasketItem> BasketItems => Set<BasketItem>();\n```",
+      "line": 13
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.01/src/GameStore.Api/Data/Migrations/20241221003327_AddCustomerBasket.cs",
+      "description": ">> dotnet ef migrations add AddCustomerBasket --output-dir Data/migrations",
+      "line": 1
+    },
+    {
+      "title": "Section 2",
+      "description": "Implementing the Upsert Basket Feature "
+    },
+    {
+      "directory": "Notes/01-The-Shoping-Basket-API/Lesson03.02/src/GameStore.Api/Features/Baskets",
+      "description": "Adding a new Folder for the Basket Feature \n"
+    },
+    {
+      "directory": "Notes/01-The-Shoping-Basket-API/Lesson03.02/src/GameStore.Api/Features/Baskets/UpsertBasket",
+      "description": "Adding a sub Folder for the UpsertBasket Feature \n"
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.02/src/GameStore.Api/Features/Baskets/UpsertBasket/UpsertBasketDtos.cs",
+      "description": "sent by the client to upsert the basket ",
+      "line": 3
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.02/src/GameStore.Api/Features/Baskets/UpsertBasket/UpsertBasketEndpoint.cs",
+      "description": "This will be a put request : PUT /baskets/userId",
+      "line": 9
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.02/src/GameStore.Api/Features/Baskets/BasketsEndpoints.cs",
+      "description": "Hooking the created endpoint to our program.cs file as an extention method ",
+      "line": 5
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.02/src/GameStore.Api/Program.cs",
+      "description": "app.MapBaskets(); registers all shopping basket-related endpoints (e.g., GET/POST/DELETE basket items) to the API routing pipeline.\n\n It's an extension method that groups basket operations similar to how MapGames() and MapGenres() register their respective endpoints. \n \n \n This keeps route configuration modular and organized by feature.",
+      "line": 44
+    },
+    {
+      "title": "Section 3",
+      "description": "Testing the Upsert Basket Feature \n"
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Testing the Upsert Basket Feature",
+      "line": 52
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Seting the Put request ",
+      "line": 54
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Testing the Db ",
+      "line": 58
+    },
+    {
+      "title": "Section 4",
+      "description": "Implementing the Get basket Feature\n"
+    },
+    {
+      "directory": "Notes/01-The-Shoping-Basket-API/Lesson03.04/src/GameStore.Api/Features/Baskets/GetBasket",
+      "description": "Create a folder for the Get Basket feature \n"
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.04/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketDtos.cs",
+      "description": "An Item in the Shoping Basket ",
+      "line": 11
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.04/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketDtos.cs",
+      "description": "The Shoping Basket Itself",
+      "line": 3
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.04/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketEndpoint.cs",
+      "description": "creating a new GET endpoint to get the basket data \n",
+      "line": 6
+    },
+    {
+      "file": "Notes/01-The-Shoping-Basket-API/Lesson03.04/src/GameStore.Api/Features/Baskets/BasketsEndpoints.cs",
+      "description": "group.MapGetBasket(); registers the GET endpoint for retrieving a basket within the /baskets route group. It wires up the handler defined in the GetBasket feature so clients can fetch a customer’s basket via the grouped route.",
+      "line": 13
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Testing the Request",
+      "line": 61
+    }
+  ],
   "ref": "Notes"
 }

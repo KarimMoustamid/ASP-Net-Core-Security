@@ -32,18 +32,30 @@ This document outlines key security topics for ASP.NET Core, focusing on authent
 ---
 
 dotnet user-jwts create
-![JWT Creation Command in .NET CLI](images/s1.png)
+![JWT Creation Command in .NET CLI](/Notes/Images/s1.png)
 
 dotnet user-jwts print JWT-ID
-![Print the JWT Token Command in .NET CLI](images/s2.png)
+![Print the JWT Token Command in .NET CLI](/Notes/Images/s2.png)
 
 - https://jwt.ms/
 - https://jwt.io/
 
-![401 error](images/s3.png)
+![401 error](/Notes/Images/s3.png)
 
 we need to add the token to the request
-![postman](images/s4.png)
+![postman](/Notes/Images/s4.png)
 
 We completed the feature
-![postman](images/s5.png)
+![postman](/Notes/Images/s5.png)
+
+Testing the Upsert Basket Feature
+![terminal](/Notes/Images/s6.png)
+
+Testing with postman
+![postmap Put](/Notes/Images/s7.png)
+
+Cheking the DB
+![Database](/Notes/Images/s8.png)
+
+Testing the Get Basket Request
+![postmap GET](/Notes/Images/s9.png)

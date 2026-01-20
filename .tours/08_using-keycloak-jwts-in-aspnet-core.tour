@@ -1,0 +1,6 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "08_Using Keycloak JWTs in ASP.NET Core",
+  "steps": [],
+  "ref": "Notes"
+}
