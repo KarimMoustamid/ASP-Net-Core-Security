@@ -1,6 +1,32 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "Authentication",
-  "steps": [],
+  "title": "00_Authentication_Theory",
+  "steps": [
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "How to create a JWT Token (Later we will use an identity provider to generate them for us)\n\n>> dotnet user-jwts create",
+      "line": 34
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "The command dotnet user-jwts print JWT-ID retrieves and displays a JWT token that was previously created using the .NET CLI tool.\n\n>> dotnet user-jwts print",
+      "line": 37
+    },
+    {
+      "file": "BackEnd/GameStore.API/Properties/launchSettings.json",
+      "description": "In the context of JWT, the audience (aud claim) specifies which application or service the token is intended for. It's a security measure to prevent tokens from being used in unintended contexts.\n\nRelating to your launchSettings.json:\n\nThe applicationUrl defines where your API runs:\n\nhttps://localhost:7126 - Your backend API (HTTPS)\nhttp://localhost:5173 - Your frontend application (HTTP)\nWhen creating a JWT token for this setup, the audience should match the intended recipient:\n\nIf the token is for your backend API, the aud claim should be https://localhost:7126\nIf the token is for your frontend, it might be http://localhost:5173",
+      "line": 17
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.06/src/GameStore.Api/appsettings.Development.json",
+      "description": "This section was generated when we ran the dotnet user-jwts command during development setup.\n\nHere's the process:\n\nInitial command: You ran dotnet user-jwts create with a specified audience (one of those URLs)\nAutomatic configuration: The .NET CLI tool automatically added this Authentication section to appsettings.Development.json .\n\nMultiple audiences: Each time you created a JWT token with a different audience URL, it was added to the ValidAudiences array .\n\nIssuer set: The ValidIssuer is always set to \"dotnet-user-jwts\" by the tool .\n\nSo essentially, this configuration was generated automatically by the .NET user-jwts tool as you created tokens with different localhost URLs. It ensures your API accepts tokens created by this development tool and validates them against the specific audiences you've been testing with.\n\n--- \nThis section configures JWT Bearer token authentication for your ASP.NET Core API:\n\nAuthentication - The authentication configuration block\n\nSchemes.Bearer - Configures the Bearer token authentication scheme (used for JWT validation)\n\nValidAudiences - An array of acceptable audience URLs. The JWT's aud claim must match one of these values:\n\nhttp://localhost:21855\nhttps://localhost:44366\nhttp://localhost:5082\nhttps://localhost:7077 \n\nThese are different localhost URLs where your API might run during development. If a JWT token has an aud claim that doesn't match any of these, the API rejects it (401 Unauthorized).\n\nValidIssuer - Specifies who issued the token. The JWT's iss claim must equal \"dotnet-user-jwts\". This confirms the token was issued by the .NET CLI tool you used with dotnet user-jwts create.\n\nIn practice: When you send a request with a JWT Bearer token, the API:\n\nExtracts the token from the Authorization header\nVerifies the aud claim matches one of the ValidAudiences\nVerifies the iss claim equals ValidIssuer\nIf both match, the request is authenticated; otherwise, it returns 401",
+      "line": 9
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Websites for decoding JWT Tokens ",
+      "line": 40
+    }
+  ],
   "ref": "Notes"
 }

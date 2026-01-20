@@ -1,0 +1,138 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "01_Authentication_CodeSteps",
+  "steps": [
+    {
+      "title": "Code : Recive and Read JWT",
+      "description": "How to create , revice and Read JWT in our API"
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.06/src/GameStore.Api/GameStore.Api.csproj",
+      "description": "This NuGet package reference adds JWT Bearer token authentication support to your ASP.NET Core API:\n\nMicrosoft.AspNetCore.Authentication.JwtBearer - The official Microsoft library that enables your API to validate and authenticate JWT tokens\nVersion 8.0.11 - Compatible with .NET 8.0 (matching your TargetFramework)\nWithout this package, your API wouldn't have the built-in middleware to parse Bearer tokens from request headers, validate their signatures, and extract claims. It's the core dependency that makes the authentication configuration in appsettings.Development.json actually work.",
+      "line": 11
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.06/src/GameStore.Api/Program.cs",
+      "description": "Registers auth services: builder.Services.AddAuthentication() adds the authentication system to DI.\n\nAdds JWT handler: .AddJwtBearer() configures the JWT Bearer authentication scheme, reading options like ValidAudiences and ValidIssuer from appsettings.Development.json.\n\nPurpose: Enables the API to validate Bearer tokens and populate user claims for authenticated requests.\n\nPipeline requirement: Add app.UseAuthentication(); and app.UseAuthorization(); in Program.cs and protect endpoints (e.g., [Authorize] or .RequireAuthorization()) for the JWT checks to actually run.",
+      "line": 24
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.07/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "```csharp\n\n ClaimsPrincipal user\n\n```\nClaimsPrincipal user is a dependency-injected parameter that represents the authenticated caller:\n\nSource: Populated from HttpContext.User by ASP.NET Core after JWT validation runs.\n\nContains: User identity and claims extracted from the JWT payload (e.g., sub, aud, iss, roles, custom claims).\n\nUsage: Check authentication status via user.Identity.IsAuthenticated, extract claims with user.FindFirst(ClaimTypes.NameIdentifier)?.Value, or verify roles via user.IsInRole(\"Admin\").\n\nPrerequisite: Requires app.UseAuthentication(); and a valid Bearer token in the Authorization header for user to be populated.\n",
+      "line": 22
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.07/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "This line checks if the request is unauthenticated:\n\nuser?.Identity?.IsAuthenticated — safely accesses the Identity.IsAuthenticated property; returns null or false if the user isn't authenticated.\n\n== false — explicitly checks for false or null.\nResult: If no valid JWT Bearer token was provided (or it failed validation), the endpoint returns 401 Unauthorized, blocking unauthenticated requests from creating games.\n\nNote: A cleaner approach is to use .RequireAuthorization() when mapping the route—it enforces auth automatically without manual checks.\n\n```csharp\nif (user?.Identity?.IsAuthenticated == false)\n{\n   return Results.Unauthorized();\n}\n\n```",
+      "line": 24
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "401 troubleshooting: Common causes are audience/issuer mismatch, missing middleware, missing Authorization: Bearer <token> header in Postman, or an expired token.",
+      "line": 43,
+      "title": "BUG 401 Error"
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Solution Attack the authorization header to the request ",
+      "line": 45,
+      "title": "Solution"
+    },
+    {
+      "title": "Code : Record  Auth User info",
+      "description": "How to record the last user how made a modification"
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Models/Game.cs",
+      "description": "Adding LastUpdatedBy prop",
+      "line": 21
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/GetGames/GetGamesDtos.cs",
+      "description": "Adding LastUpdatedBy prop",
+      "line": 17
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/GetGame/GetGameDtos.cs",
+      "description": "Adding LastUpdatedBy prop",
+      "line": 11
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/CreateGame/CreateGameDtos.cs",
+      "description": "Adding LastUpdatedBy prop",
+      "line": 24
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "\n",
+      "line": 32
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "",
+      "line": 34
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "",
+      "line": 64
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "",
+      "line": 87
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/UpdateGame/UpdateGameEndpoint.cs",
+      "description": "",
+      "line": 20
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/UpdateGame/UpdateGameEndpoint.cs",
+      "description": "",
+      "line": 22
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/UpdateGame/UpdateGameEndpoint.cs",
+      "description": "",
+      "line": 24
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/UpdateGame/UpdateGameEndpoint.cs",
+      "description": "",
+      "line": 56
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/GetGame/GetGameEndpoint.cs",
+      "description": "",
+      "line": 30
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.08/src/GameStore.Api/Features/Games/GetGames/GetGamesEndpoint.cs",
+      "description": "",
+      "line": 33
+    },
+    {
+      "title": "New Migration",
+      "description": "### we need to add a new migration to update our database with the new Data Model changes : \n\n>> dotnet ef migrations add AddLastUpdatedBy --output-dir Data/Migrations"
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.09/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "the default JWT handler remaps sub to ClaimTypes.NameIdentifier (http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier). After mapping, sub isn’t present, so FindFirstValue(JwtRegisteredClaimNames.Sub) returns null.\n\n\n- We need .Net to use the Sub Claim insted ",
+      "line": 31,
+      "title": "Bug"
+    },
+    {
+      "file": "Notes/00-Authentication/Lesson02.09/src/GameStore.Api/Program.cs",
+      "description": "AddAuthentication().AddJwtBearer(options => options.MapInboundClaims = false; ) \nkeeps inbound JWT claims un-mapped, so standard names like sub, aud, iss remain exactly as in the token. This lets you read user.\n\nFindFirstValue(JwtRegisteredClaimNames.Sub) without .NET converting it to ClaimTypes.NameIdentifier. \nEnsure the auth middleware (app.UseAuthentication(); app.UseAuthorization();) runs so tokens are actually validated and claims populated.",
+      "line": 34,
+      "title": "Solution"
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Adding lastUpdatedBy feature completed",
+      "line": 49
+    }
+  ],
+  "ref": "Notes"
+}

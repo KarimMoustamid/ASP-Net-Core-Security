@@ -42,4 +42,8 @@ dotnet user-jwts print JWT-ID
 
 ![401 error](images/s3.png)
 
+we need to add the token to the request
 ![postman](images/s4.png)
+
+We completed the feature
+![postman](images/s5.png)
