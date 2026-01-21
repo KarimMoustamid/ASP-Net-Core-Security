@@ -70,3 +70,55 @@ Adding a Role to the JWT
 ![postmap GET](/Notes/Images/s12.png)
 
 we need to generate a new JWT with the correct role and scrope
+
+---
+
+# How Static Images Are Served
+
+🎯 Overview
+Images are uploaded to the server and served as static files through ASP.NET Core's built-in static file middleware.
+
+📁 Architecture
+
+1. Storage Location
+   Physical path: wwwroot/GameImages/
+   Current files: 4 uploaded images with GUID names
+   5ecc50e2-3896-41bf-9338-be47bea5e325.jpeg
+   74007262-d797-4365-a048-ffab13091ce5.jpeg
+   98871fea-25aa-441a-af64-46456a63a0f6.jpeg
+   d64817b1-212b-479a-b00b-028b5b9351eb.jpeg
+2. Serving Middleware
+   In Program.cs:56:
+
+Enables serving of files from wwwroot/ directory.
+Makes images publicly accessible via HTTP. 3. Upload Service
+FileUploader.cs handles:
+
+Validation: File size (max 10 MB), extension check (.jpg, .jpeg, .png, .gif, .pdf, .docx)
+Storage: Saves files to wwwroot/GameImages/ with GUID filenames to avoid collisions
+URL generation: Builds public URL: http://localhost:5001/GameImages/{guid}.jpeg
+
+1. User submits form with image file
+   ↓
+2. FileUploader.UploadFileAsync() called
+   ↓
+3. Validations:
+   - File not null ✓
+   - Size ≤ 10 MB ✓
+   - Extension in whitelist ✓
+     ↓
+4. Directory created if needed: wwwroot/GameImages/
+   ↓
+5. File saved with unique GUID name
+   Example: 5ecc50e2-3896-41bf-9338-be47bea5e325.jpeg
+   ↓
+6. Public URL returned
+   Example: http://localhost:5001/GameImages/5ecc50e2-3896-41bf-9338-be47bea5e325.jpeg
+   ↓
+7. URL stored in database (Game.ImageUri field)
+
+The issue :
+
+![postmap GET](/Notes/Images/s13.png)
+
+---

@@ -153,6 +153,36 @@
       "description": "Configuring a fallback policy and anonymous"
     },
     {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.08/src/GameStore.Api/Shared/Authorization/AuthorizationExtensions.cs",
+      "description": "changing AddPolicy to .AddFallbackPolicy : \n\n🎯 Purpose\nMakes Policies.UserAccess the default authorization policy for all protected endpoints, eliminating the need to explicitly specify it on every endpoint.",
+      "line": 11
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.08/src/GameStore.Api/Features/Games/GetGames/GetGamesEndpoint.cs",
+      "description": "🎯 Purpose\nExempts this endpoint from the fallback authorization policy, allowing unauthenticated users to access it.",
+      "line": 43
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.08/src/GameStore.Api/Features/Games/GetGame/GetGameEndpoint.cs",
+      "description": "",
+      "line": 34
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.08/src/GameStore.Api/Features/Genres/GetGenres/GetGenresEndpoint.cs",
+      "description": "",
+      "line": 18
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "The fallbackpolicy is affecting serving assets ",
+      "line": 122
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.08/src/GameStore.Api/Program.cs",
+      "description": "this midleware need to be added before the Authorization middleware . So we need to explicity declare the app.UseAuthorization() middleware",
+      "line": 44
+    },
+    {
       "title": "Section 07",
       "description": "Implementing an authorization handler"
     },
