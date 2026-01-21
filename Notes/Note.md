@@ -68,3 +68,5 @@ Forbiden
 
 Adding a Role to the JWT
 ![postmap GET](/Notes/Images/s12.png)
+
+we need to generate a new JWT with the correct role and scrope

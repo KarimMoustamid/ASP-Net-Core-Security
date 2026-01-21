@@ -30,26 +30,6 @@
       "line": 65
     },
     {
-      "title": "BUG",
-      "description": "We still see 401 Forbiden "
-    },
-    {
-      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Program.cs",
-      "description": "🎯 Purpose\nTells ASP.NET Core to look for the \"role\" claim in the JWT token when checking user roles.\n\nBehavior:\n- Specifies which JWT claim contains role information\n- Maps the \"role\" claim to ClaimTypes.Role internally\n- Enables .RequireRole() and User.IsInRole() to work correctly",
-      "line": 36,
-      "selection": {
-        "start": {
-          "line": 36,
-          "character": 1
-        },
-        "end": {
-          "line": 36,
-          "character": 78
-        }
-      },
-      "title": "Solution"
-    },
-    {
       "title": "Section 02",
       "description": "Using role-based authorization"
     },
@@ -78,16 +58,95 @@
       "line": 71
     },
     {
+      "title": "BUG",
+      "description": "We still see 401 Forbiden "
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Program.cs",
+      "description": "🎯 Purpose\nTells ASP.NET Core to look for the \"role\" claim in the JWT token when checking user roles.\n\nBehavior:\n- Specifies which JWT claim contains role information\n- Maps the \"role\" claim to ClaimTypes.Role internally\n- Enables .RequireRole() and User.IsInRole() to work correctly",
+      "line": 36,
+      "selection": {
+        "start": {
+          "line": 36,
+          "character": 1
+        },
+        "end": {
+          "line": 36,
+          "character": 78
+        }
+      },
+      "title": "Solution"
+    },
+    {
       "title": "Section 03",
-      "description": "Using claims-based authorization"
+      "description": "Using claims-based authorization\n"
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketEndpoint.cs",
+      "description": "Purpuse : \n- What it is: Inline claim-based authorization for the endpoint.\n- What it requires: An authenticated user whose JWT contains claim scope with value basket.read.\n\nBehavior:\n- Missing/invalid token → 401 Unauthorized\n- Valid token without scope=basket.read → 403 Forbidden\n- Valid token with scope=basket.read → Endpoint runs",
+      "line": 40
+    },
+    {
+      "title": "Terminal Command",
+      "description": "we need to generate a new token with the required scope : \n\n>> dotnet user-jwts create --scope basket.read"
     },
     {
       "title": "Section 04",
       "description": "Using policy-based authorization"
     },
     {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.06/src/GameStore.Api/Shared/Authorization/Policies.cs",
+      "description": "Purpose: Centralizes policy names for authorization, avoiding hard-coded strings across the app.",
+      "line": 3
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.06/src/GameStore.Api/Program.cs",
+      "description": "add this : \n                \n```csharp\n                .AddPolicy(Policies.UserAccess, authBuilder =>\n                {\n                    authBuilder.RequireClaim(\"scope\", \"gamestore_api.all\");\n                })\n                .AddPolicy(Policies.AdminAccess, authBuilder =>\n                {\n                    authBuilder.RequireClaim(\"scope\", \"gamestore_api.all\");\n                    authBuilder.RequireRole(Roles.Admin);\n                });   \n\n```\n\n\n---\n\n### Behavior\n\n- Missing/invalid token: 401 Unauthorized (authentication fails).\n- Valid token without required claim/role: 403 Forbidden (authenticated but not authorized).\n- Valid token with required claim/role: Request proceeds.\n\n### Usage\n\n- Protect endpoints with named policies:\n- .RequireAuthorization(Policies.UserAccess) for general API-read access.\n- .RequireAuthorization(Policies.AdminAccess) for admin-only operations.\n",
+      "line": 41
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.06/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketEndpoint.cs",
+      "description": "Enforces that only authenticated users with the correct API scope can retrieve baskets.",
+      "line": 41
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.06/src/GameStore.Api/Features/Baskets/UpsertBasket/UpsertBasketEndpoint.cs",
+      "description": "Enforces that only authenticated users with the correct API scope can update baskets.",
+      "line": 51
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.06/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "Restricts game creation to authenticated admins only with the correct API scope.\n",
+      "line": 91
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.06/src/GameStore.Api/Features/Games/UpdateGame/UpdateGameEndpoint.cs",
+      "description": "Restricts game update to authenticated admins only with the correct API scope.\n\n",
+      "line": 65
+    },
+    {
+      "title": "terminal command",
+      "description": ">> dotnet users-jwts create --scope gamestore_api.all"
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": ">> dotnet users-jwts create --scope gamestore_api.all --role Admin ",
+      "line": 73,
+      "title": "Terminal Command"
+    },
+    {
       "title": "Section 05",
       "description": "Refactoring the authorization policy"
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.07/src/GameStore.Api/Shared/Authorization/AuthorizationExtensions.cs",
+      "description": "🎯 Purpose\nCentralizes authorization setup into a reusable extension method, keeping Program.cs clean and maintainable.",
+      "line": 5
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.07/src/GameStore.Api/Program.cs",
+      "description": "🎯 Purpose\nReplaces inline authorization setup with a clean, reusable extension method call.",
+      "line": 40
     },
     {
       "title": "Section 06",
