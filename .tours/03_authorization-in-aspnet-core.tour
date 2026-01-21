@@ -5,6 +5,101 @@
     {
       "title": "Goal",
       "description": "How to Enfore practice control in our backend using Authorization features of .Net Core\n\n\n- The need for authorization\n- Require authorization in ASP.NET Core\n- Role-based authorization\n- Claims-based authorization\n- Policy-based authorization\n- Authorization by default\n- Anonymous access\n- Resource-based authorization\n"
+    },
+    {
+      "title": "Section 00",
+      "description": "# Authentication and Authorization :\n\n## Authentication : \"Who are you?\"\n\nDefinition: The process of verifying the identity of a user or system.\n\nPurpose: Proves you are who you claim to be before granting access.\n\n### How it works:\n\nUser provides credentials (username/password, token, certificate, biometrics) \n\nSystem validates these credentials against a trusted source\nUpon success, system creates an identity (typically a ClaimsPrincipal in ASP.NET Core)\n\nUser receives an access token (commonly JWT) for subsequent requests\n\n## Authorization: \"What can you do?\"\n\nDefinition: Determining what an authenticated user is allowed to do.\n\nPurpose: Enforces access control policies after identity is verified.\n\n# Types of Authorization in ASP.NET Core \n\n1. Role-Based Authorization\n    - Definition: Checks if an authenticated user belongs to a specific role (e.g., Admin, User, Manager).\n2. Claims-Based Authorization\n    - Definition: Uses specific user or client attributes (claims) to make authorization decisions. Claims are key-value pairs describing the user.\n3. Policy-Based Authorization\n    - Definition: Combines multiple requirements (roles, claims, custom logic) into reusable named policies.\n\n    When to use: Complex authorization scenarios or when you need to reuse the same set of requirements across multiple endpoints.\n\n4. Resource-Based Authorization\n    - Definition: Authorization decisions are based on the specific resource being accessed. Requires checking the resource's properties at runtime.\n\n    When to use:\n\n    Users can only edit their own data Access depends on resource ownership Dynamic permissions based on resource state"
+    },
+    {
+      "title": "Section 01",
+      "description": "Requiring authorization in API endpoints"
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.03/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": " Add this :  \n```csharp\n  // Requires authenticated user\n  .RequireAuthorization();\n```\n\n--- \n\nBehavior:\n- ✅ Requires authentication → User must have a valid JWT token\n- ✅ Populates ClaimsPrincipal user parameter\n- ❌ Returns 401 Unauthorized if no token or invalid token\n- ✅ Allows request to proceed if authenticated",
+      "line": 90
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.03/src/GameStore.Api/Program.cs",
+      "description": "Add This Code : \n\n```csharp\nbuilder.Services.AddAuthorizationBuilder();\n```\n\n\n--- \n🎯 Purpose\n\nRegisters the authorization services in the dependency injection container and returns a builder for configuring authorization policies.\n\n📦 What It Does\nBehind the scenes:\n- ✅ Registers IAuthorizationService (used for checking authorization)\n- ✅ Registers IAuthorizationPolicyProvider (manages policies)\n- ✅ Registers IAuthorizationHandlerProvider (finds authorization handlers)\n- ✅ Returns AuthorizationBuilder for fluent configuration\n",
+      "line": 38
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Now we have to add a token ",
+      "line": 65
+    },
+    {
+      "title": "BUG",
+      "description": "We still see 401 Forbiden "
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Program.cs",
+      "description": "🎯 Purpose\nTells ASP.NET Core to look for the \"role\" claim in the JWT token when checking user roles.\n\nBehavior:\n- Specifies which JWT claim contains role information\n- Maps the \"role\" claim to ClaimTypes.Role internally\n- Enables .RequireRole() and User.IsInRole() to work correctly",
+      "line": 36,
+      "selection": {
+        "start": {
+          "line": 36,
+          "character": 1
+        },
+        "end": {
+          "line": 36,
+          "character": 78
+        }
+      },
+      "title": "Solution"
+    },
+    {
+      "title": "Section 02",
+      "description": "Using role-based authorization"
+    },
+    {
+      "directory": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Shared/Authorization",
+      "description": "Adding This new Shared Folder"
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Shared/Authorization/Roles.cs",
+      "description": "🎯 Purpose\nDefines a centralized constants class for role names used throughout the application.",
+      "line": 3
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.05/src/GameStore.Api/Features/Games/CreateGame/CreateGameEndpoint.cs",
+      "description": "🎯 Purpose\nRestricts endpoint access to only users with the Admin role. Combines authentication + role-based authorization.",
+      "line": 91
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": "Testing our request now , without a Role Claim",
+      "line": 67
+    },
+    {
+      "file": "Notes/00-Authentication/Note.md",
+      "description": ">> dotnet user-jwts create --role \"Admin\"",
+      "line": 71
+    },
+    {
+      "title": "Section 03",
+      "description": "Using claims-based authorization"
+    },
+    {
+      "title": "Section 04",
+      "description": "Using policy-based authorization"
+    },
+    {
+      "title": "Section 05",
+      "description": "Refactoring the authorization policy"
+    },
+    {
+      "title": "Section 06",
+      "description": "Configuring a fallback policy and anonymous"
+    },
+    {
+      "title": "Section 07",
+      "description": "Implementing an authorization handler"
+    },
+    {
+      "title": "Section 08",
+      "description": "Using resource-based authorization"
     }
   ],
   "ref": "Notes"

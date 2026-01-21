@@ -59,3 +59,12 @@ Cheking the DB
 
 Testing the Get Basket Request
 ![postmap GET](/Notes/Images/s9.png)
+
+Postman Test
+![postmap GET](/Notes/Images/s10.png)
+
+Forbiden
+![postmap GET](/Notes/Images/s11.png)
+
+Adding a Role to the JWT
+![postmap GET](/Notes/Images/s12.png)
