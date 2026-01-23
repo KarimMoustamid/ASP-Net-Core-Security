@@ -187,8 +187,51 @@
       "description": "Implementing an authorization handler"
     },
     {
+      "directory": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.09/src/GameStore.Api/Features/Baskets/Authorization",
+      "description": "Adding Authorization folder for spesific Basket functionality"
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.09/src/GameStore.Api/Features/Baskets/Authorization/BasketAuthorizationHandler.cs",
+      "description": "🎯 Purpose\nImplements resource-based authorization to check if a user can access a specific basket (ownership or admin).",
+      "line": 15
+    },
+    {
       "title": "Section 08",
       "description": "Using resource-based authorization"
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.10/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketEndpoint.cs",
+      "description": "```csharp\n// add This code : \nIAuthorizationService authorizationService\nClaimsPrincipal user\n```",
+      "line": 37
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.10/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketEndpoint.cs",
+      "description": "```csharp\n// add This code : \nif (!authResult.Succeeded)\n{\n    return Results.Forbid();\n}\n```",
+      "line": 75
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.10/src/GameStore.Api/Features/Baskets/GetBasket/GetBasketEndpoint.cs",
+      "description": "## Step 1: Endpoint Receives Request\n```csharp\napp.MapGet(\"/{userId}\", async (\n    Guid userId,\n    IAuthorizationService authorizationService,  // ← Injected dependency\n    ClaimsPrincipal user                         // ← Current authenticated user\n) =>\n```\n\n## Step 2: Endpoint Queries the Basket Resource\n\n```csharp\nvar basket = await dbContext.Baskets\n                            .Include(basket => basket.Items)\n                            .ThenInclude(item => item.Game)\n                            .FirstOrDefaultAsync(basket => basket.Id == userId)\n                            ?? new() { Id = userId };\n```\n\n## Step 3: Endpoint Invokes Authorization Check\n\n```csharp\nvar authResult = await authorizationService.AuthorizeAsync(\n    user,                           // The current authenticated user\n    basket,                         // The resource being accessed ← Important!\n    new OwnerOrAdminRequirement()   // The requirement to check\n);\n```\n\n## Step 4: Authorization Service Finds and Calls the Handler\n\nASP.NET Core's authorization system finds BasketAuthorizationHandler because it's registered and matches:\n\nThe requirement type: OwnerOrAdminRequirement ✓\nThe resource type: CustomerBasket ✓\n\n```csharp\nprotected override Task HandleRequirementAsync(\n    AuthorizationHandlerContext context,    // Contains the 'user'\n    OwnerOrAdminRequirement requirement,    // The requirement\n    CustomerBasket resource                 // The 'basket' resource\n)\n\n```\n\n## Step 5: Handler Evaluates the Authorization\n\n\n```csharp\n// Extract user's ID from JWT\nvar currentUserId = context.User.FindFirstValue(JwtRegisteredClaimNames.Sub);\n\n// Check TWO conditions:\n// 1. Is the user the basket owner?\nif (Guid.Parse(currentUserId) == resource.Id)  // ← Compares user ID to basket ID\n{\n    context.Succeed(requirement);  // ✓ Grant access\n}\n// 2. OR is the user an Admin?\n|| context.User.IsInRole(Roles.Admin)\n{\n    context.Succeed(requirement);  // ✓ Grant access\n}\n\n// If neither condition is true, don't call Succeed() → Access denied\n\n```\n## Step 6: Endpoint Checks the Result\n\n```csharp\nif (!authResult.Succeeded)\n{\n    return Results.Forbid();  // 403 Forbidden\n}\n```",
+      "line": 67
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.10/src/GameStore.Api/Program.cs",
+      "description": "```csharp\n// add This code : \nbuilder.Services.AddSingleton<IAuthorizationHandler, BasketAuthorizationHandler>();\n```",
+      "line": 78
+    },
+    {
+      "title": "Testing ",
+      "description": "Test with the user token to get the basket data . \n\n\nNext Generate a GUID to represent an user Id different than the basket User Id . \n\n>> [guid]::NewGuid()\n\nGenerate an access Token with this GUID : \n\n>> dotnet user-jwts create --scope gamestore_api.all --name ´new-generate-guid´\n\n> Note : --name is sub\n\n\nTest in postman with the new token to acess an other user basket you should see 403 Forbiden \n\nThen test with an admin role :\n\n>> dotnet user-jwts create --scope gamestore_api.all --name ´new-generate-guid´ --role Admin\n\nyou should see 200 ok "
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.10/src/GameStore.Api/Features/Baskets/UpsertBasket/UpsertBasketEndpoint.cs",
+      "description": "```csharp\n// add This code : \nIAuthorizationService authorizationService,\n            ClaimsPrincipal user\n```",
+      "line": 20
+    },
+    {
+      "file": "Notes/02_Authorization-in-ASP.NET Core/Lesson04.10/src/GameStore.Api/Features/Baskets/UpsertBasket/UpsertBasketEndpoint.cs",
+      "description": " ```csharp\n// add This code : \n var authResult = await authorizationService.AuthorizeAsync(\n                user,\n                basket,\n                new OwnerOrAdminRequirement()\n            );\n\n            if (!authResult.Succeeded)\n            {\n                return Results.Forbid();\n            }  \n\n```",
+      "line": 52
     }
   ],
   "ref": "Notes"

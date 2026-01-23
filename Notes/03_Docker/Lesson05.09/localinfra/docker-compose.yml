@@ -1,0 +1,27 @@
+# Docker run -d -p 8080:80 -v ´nameOftheLocationInOurBox:/usr/share/nginx/html´ -e MY_VAR="Hello from outside the container" imageName:version --name ´name´
+
+# Docker Compose configuration for running an nginx web server
+services:
+  # Nginx web server service
+  nginx:
+    # Use the official nginx image from Docker Hub
+    image: nginx
+    # Give the container a custom name for easier identification
+    container_name: nginx-test
+    # Port mapping: expose container port 80 on host port 8080
+    # Access the server at http://localhost:8080
+    ports:
+      - "8080:80"
+    # Mount a named volume to persist web content
+    # Maps the volume 'nginx-data' to nginx's default HTML directory
+    volumes:
+      - nginx-data:/usr/share/nginx/html
+    # Environment variables passed to the container
+    # Can be used within the container or by applications running inside it
+    environment:
+      - MY_VAR="Hello from the real world!"
+
+# Named volumes definition
+# This volume persists data even after the container is removed
+volumes:
+  nginx-data:

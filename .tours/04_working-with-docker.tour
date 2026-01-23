@@ -1,6 +1,29 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "04_Working-with-Docker",
-  "steps": [],
+  "steps": [
+    {
+      "title": "Objectives",
+      "description": "## Module Objectives\n\n- Understand Docker\n- Download Docker images\n- Run Docker containers\n- Expose container ports\n- Interact with containers\n- Use volumes\n- Use environment variables\n- Use Docker compose"
+    },
+    {
+      "title": "Docker Commands",
+      "description": "## What we did : \n\n### How to run a Docker container \n\n1. Quick Docker introduction\n2. Install Docker engine / Docker Desktop \n3. Docker Hub , how to download an image \n4. Command to pull an image : \n    >> Docker pull imageName\n    - What are layers ? command to create the docker image .\n5. Checking we pulled the image \n    >> Docker images \n    - TAG : version identifier for the image \n    - Looking for a stable version of the image using the TAG\n     >> Docker pull imageName:stable \n     >> Docker pull imageName:version\n6. Run the docker image \n    >> docker run imageName:version\n    - This image now will become a docker container \n    - list the running containers : \n    >> docker ps \n    - list all containers that run before :\n    >> docker ps --all\n    - Create a name for the container :\n    >> Docker run imageName:version --name ´name´\n    - How to run the container without having an antiractive process : \n    - remove a container :\n    >> docker rm ´containerName´\n    - Run in detatch Mode : \n    >> Docker run -d imageName:version --name ´name´\n7. Port Mapping : \n   >> Docker run -d -p 8080:80 imageName:version --name ´name´ \n   \n### How to make a change inside a docker container \n\n1. >> Docker run -d -p 8080:80 imageName:version --name ´name´ \n2. Spinup an other process inside the conatiner :\n    - docker exec -it ´ContainerName´ /bin/bash \n    - Now we are in a bash session inside the container \n\n### Persisting Data\n\n>> docker ps \n>> docker rm ´Name´ --force \n>> Docker run -d -p 8080:80 imageName:version --name ´name´ \n- All our changes will be gone !! \n\n\n1. Docker Volumes : persist data even if the conatiner is stoped or deleted \n    >> Docker run -d -p 8080:80 -v ´nameOftheLocationInOurBox:/usr/share/nginx/html´ imageName:version --name ´name´ \n    - Any changes in /usr/share/nginx/html will not be stored in the conatiner but in ´nameOftheLocationInOurBox´ \n    - list the volume for our runnung container \n    >> docker volume list \n\n### Envirenment variables \n\n1.  >> Docker run -d -p 8080:80 -v ´nameOftheLocationInOurBox:/usr/share/nginx/html´ -e MY_VAR=\"Hello from outside the container\" imageName:version --name ´name´ \n2. >> Docker exec -it imageName /bin/bash \n    >> echo \" Tou said : $MY_VAR\" > index.html"
+    },
+    {
+      "directory": "Notes/03_Docker/Lesson05.09/localinfra",
+      "description": "files related to local infrastructure\n"
+    },
+    {
+      "file": "Notes/03_Docker/Lesson05.09/localinfra/docker-compose.yml",
+      "description": "Adding a docker-compose file",
+      "line": 1
+    },
+    {
+      "file": "Notes/03_Docker/Lesson05.09/localinfra/docker-compose.yml",
+      "description": "What we are trying to do ",
+      "line": 1
+    }
+  ],
   "ref": "Notes"
 }
