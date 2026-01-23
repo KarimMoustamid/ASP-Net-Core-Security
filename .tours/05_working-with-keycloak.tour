@@ -1,6 +1,35 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "05_Working-with-Keycloak",
-  "steps": [],
+  "steps": [
+    {
+      "title": "objective",
+      "description": "Keycloak Module Objectives : \n\n- What is Keycloak and why use it?\n- Run Keycloak via Docker compose\n- Keycloak realms\n- User management\n- Role management"
+    },
+    {
+      "title": "section 01",
+      "description": "Introduction to Keycloak"
+    },
+    {
+      "title": "section 02",
+      "description": "Running Keycloak as a Docker container "
+    },
+    {
+      "title": "section 03",
+      "description": "Creating a realm"
+    },
+    {
+      "title": "section 04",
+      "description": "Creating users"
+    },
+    {
+      "title": "section 05",
+      "description": "Creating and assigning roles "
+    },
+    {
+      "title": "section 06",
+      "description": "Exporting the realm configuration "
+    }
+  ],
   "ref": "Notes"
 }

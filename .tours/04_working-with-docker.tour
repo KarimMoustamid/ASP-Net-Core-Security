@@ -23,6 +23,10 @@
       "file": "Notes/03_Docker/Lesson05.09/localinfra/docker-compose.yml",
       "description": "What we are trying to do ",
       "line": 1
+    },
+    {
+      "title": "Command",
+      "description": "- >> docker compose up\n- >> docker compose up -d \n- >> docker ps "
     }
   ],
   "ref": "Notes"
