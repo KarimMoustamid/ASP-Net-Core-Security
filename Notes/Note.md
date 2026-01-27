@@ -122,3 +122,5 @@ The issue :
 ![postmap GET](/Notes/Images/s13.png)
 
 ---
+
+![Auth Flow](/Notes/Images/s14.png)

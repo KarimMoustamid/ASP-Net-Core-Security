@@ -8,15 +8,20 @@
     },
     {
       "title": "section 01",
-      "description": "Introduction to Keycloak"
+      "description": "Introduction to Keycloak\n\n- the purpuse is to help up learn OpenId protocol \n\n### Doc : \n- https://www.keycloak.org/getting-started/getting-started-docker"
+    },
+    {
+      "file": "Notes/04_Working-With-Keycloak/Lesson06.02/localinfra/docker-compose.yml",
+      "description": "Getting to command from the documentation => we are going to use it to create the docker compose file ",
+      "line": 1
     },
     {
       "title": "section 02",
-      "description": "Running Keycloak as a Docker container "
+      "description": "Running Keycloak as a Docker container \n\nrun this comand \n>> docker compose up -d "
     },
     {
       "title": "section 03",
-      "description": "Creating a realm"
+      "description": "Creating a realm\n\n- A realm in Keycloak is an isolated namespace that manages a set of users, credentials, roles, and groups. It's the top-level organizational unit for managing authentication and authorization.\n\n\n### For this section follow the video tutorial \n"
     },
     {
       "title": "section 04",

@@ -1,6 +1,20 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "07_The OAuth 2.0 framework",
-  "steps": [],
+  "steps": [
+    {
+      "title": "Objective",
+      "description": "### Module objectives : \n- What is OAuth 2.0?\n- The Authorization Code Flow\n- Register applications in Keycloak\n- Generate access tokens via Keycloak\n- Configure audience and client scopes in Keycloak\n- Use refresh tokens\n- Configure Postman to request access tokens"
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "Authentication flow ",
+      "line": 126
+    },
+    {
+      "title": "Video",
+      "description": "Watch the video for this section "
+    }
+  ],
   "ref": "Notes"
 }

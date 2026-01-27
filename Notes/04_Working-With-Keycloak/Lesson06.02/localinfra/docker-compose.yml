@@ -1,15 +1,40 @@
+# Docker Compose configuration for Keycloak identity and access management server
+# Original command reference from Keycloak documentation:
+# docker run -p 127.0.0.1:8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.5.2 start-dev
+
+# -p 127.0.0.1:8080:8080
+# -e KC_BOOTSTRAP_ADMIN_USERNAME=admin
+# -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+# -n quay.io/keycloak/keycloak
+# TAG : 26.5.2
+# start-dev
+
 services:
+  # Keycloak service - Identity and Access Management (IAM) solution
   keycloak:
+    # Official Keycloak image from Quay.io registry (version 26.0.7)
     image: quay.io/keycloak/keycloak:26.0.7
+    # Custom container name for easier identification and management
     container_name: keycloak
+    # Port mapping: exposes Keycloak's port 8080 on host port 8080
+    # Access the admin console at http://localhost:8080
     ports:
       - "8080:8080"
+    # Environment variables for initial admin user setup
     environment:
+      # Bootstrap admin username for first-time login
       - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      # Bootstrap admin password for first-time login
       - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+    # Volume mount to persist Keycloak data (users, realms, clients, etc.)
+    # Maps named volume to Keycloak's data directory
     volumes:
       - keycloak-data:/opt/keycloak/data
+    # Command to start Keycloak in development mode
+    # Dev mode enables features like auto-rebuild and relaxed security for local development
     command: ["start-dev"]
-    
+
+# Named volumes declaration
+# Persists Keycloak configuration and data across container restarts
 volumes:
   keycloak-data:
