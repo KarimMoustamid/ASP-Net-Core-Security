@@ -21,19 +21,39 @@
     },
     {
       "title": "section 03",
-      "description": "Creating a realm\n\n- A realm in Keycloak is an isolated namespace that manages a set of users, credentials, roles, and groups. It's the top-level organizational unit for managing authentication and authorization.\n\n\n### For this section follow the video tutorial \n"
+      "description": "# Creating a realm\n\n- A realm in Keycloak is an isolated namespace that manages a set of users, credentials, roles, and groups. It's the top-level organizational unit for managing authentication and authorization.\n\n\n\n"
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "Creating a Realm (Video)",
+      "line": 134
     },
     {
       "title": "section 04",
-      "description": "Creating users"
+      "description": "# Creating users"
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "Creating Users (Video)",
+      "line": 142
     },
     {
       "title": "section 05",
-      "description": "Creating and assigning roles "
+      "description": "# Creating and assigning roles "
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "Creating and assigning roles to users (Video)",
+      "line": 149
     },
     {
       "title": "section 06",
       "description": "Exporting the realm configuration "
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "Exporting the realm configuration",
+      "line": 156
     }
   ],
   "ref": "Notes"

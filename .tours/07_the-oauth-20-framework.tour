@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "07_The OAuth 2.0 framework",
+  "title": "06_The OAuth 2.0 framework",
   "steps": [
     {
       "title": "Objective",
@@ -8,12 +8,8 @@
     },
     {
       "file": "Notes/Note.md",
-      "description": "Authentication flow ",
+      "description": "# OAuth 2.0 defines grant “flows” for obtaining access tokens. \n\nThe common ones are:\n\n- Authorization Code (with PKCE for public clients): user signs in, app gets an auth code, exchanges it for tokens. Best for web, SPAs, mobile.\n- Client Credentials: machine-to-machine; no user. App uses its own credentials to get a token.\n- Device Authorization: for devices with limited input; user completes auth on another device.\n- Refresh Token: renews access tokens without re-prompting the user.\n\n### Deprecated/avoid:\n\nImplicit: replaced by Authorization Code + PKCE.\n- Resource Owner Password Credentials: only for legacy, high-trust scenarios.\nEach flow issues an access token (and sometimes refresh/ID tokens if OpenID Connect is used).\n\n<span style=\"color: #e53935;\">we are going to focus on the Authentication flow (see the screenshot)</span>\n\n",
       "line": 126
-    },
-    {
-      "title": "Video",
-      "description": "Watch the video for this section "
     }
   ],
   "ref": "Notes"

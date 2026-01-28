@@ -32,42 +32,42 @@ This document outlines key security topics for ASP.NET Core, focusing on authent
 ---
 
 dotnet user-jwts create
-![JWT Creation Command in .NET CLI](/Notes/Images/s1.png)
+![JWT Creation Command in .NET CLI](/Notes/Assets/images/s1.png)
 
 dotnet user-jwts print JWT-ID
-![Print the JWT Token Command in .NET CLI](/Notes/Images/s2.png)
+![Print the JWT Token Command in .NET CLI](/Notes/Assets/images/s2.png)
 
 - https://jwt.ms/
 - https://jwt.io/
 
-![401 error](/Notes/Images/s3.png)
+![401 error](/Notes/Assets/images/s3.png)
 
 we need to add the token to the request
-![postman](/Notes/Images/s4.png)
+![postman](/Notes/Assets/images/s4.png)
 
 We completed the feature
-![postman](/Notes/Images/s5.png)
+![postman](/Notes/Assets/images/s5.png)
 
 Testing the Upsert Basket Feature
-![terminal](/Notes/Images/s6.png)
+![terminal](/Notes/Assets/images/s6.png)
 
 Testing with postman
-![postmap Put](/Notes/Images/s7.png)
+![postmap Put](/Notes/Assets/images/s7.png)
 
 Cheking the DB
-![Database](/Notes/Images/s8.png)
+![Database](/Notes/Assets/images/s8.png)
 
 Testing the Get Basket Request
-![postmap GET](/Notes/Images/s9.png)
+![postmap GET](/Notes/Assets/images/s9.png)
 
 Postman Test
-![postmap GET](/Notes/Images/s10.png)
+![postmap GET](/Notes/Assets/images/s10.png)
 
 Forbiden
-![postmap GET](/Notes/Images/s11.png)
+![postmap GET](/Notes/Assets/images/s11.png)
 
 Adding a Role to the JWT
-![postmap GET](/Notes/Images/s12.png)
+![postmap GET](/Notes/Assets/images/s12.png)
 
 we need to generate a new JWT with the correct role and scrope
 
@@ -119,8 +119,48 @@ URL generation: Builds public URL: http://localhost:5001/GameImages/{guid}.jpeg
 
 The issue :
 
-![postmap GET](/Notes/Images/s13.png)
+![postmap GET](/Notes/Assets/images/s13.png)
 
 ---
 
-![Auth Flow](/Notes/Images/s14.png)
+<h3 style="color: #09a428;">Authentication flow :  </h3>
+
+![Auth Flow](/Notes/Assets/images/s14.png)
+
+
+# Section : Working with Keycloak
+
+
+### Creating a Realm (Video) : 
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Creating a Realm.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+
+### Creating Users (Video) : 
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Creating users.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+### Creating and assigning roles to users (Video) : 
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Creating and assigning roles.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+### Exporting the realm configuration (Video) : 
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Exporting the realm configuration.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+
+<h3 style="color: #09a428;">Configuring a client in Keycloak :  </h3>
+
+
