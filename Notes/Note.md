@@ -161,6 +161,40 @@ The issue :
 </video>
 
 
-<h3 style="color: #09a428;">Configuring a client in Keycloak :  </h3>
+<h3 style="color: #ffffff;">Configuring a client in Keycloak (Video) :  </h3>
 
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Configuring a client in Keycloak.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+
+<h3 style="color: #ffffff;">Requesting access tokens from keycloak (Video) :  </h3>
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Requesting access tokens from keycloak.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+<h3 style="color: #ffffff;">Configuring scopes and audiences in Keycloak (Video) :  </h3>
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Configuring scopes and audiences in Keycloak.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+<h3 style="color: #ffffff;">Using refresh tokens (Video) :  </h3>
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Using refresh tokens.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
+
+
+<h3 style="color: #ffffff;">Getting access tokens in Postman (Video) :  </h3>
+
+<video controls preload="metadata" width="720">
+   <source src="./Assets/Videos/Getting access tokens in Postman.MP4" type="video/mp4">
+   Your browser does not support the video tag.
+</video>
 
