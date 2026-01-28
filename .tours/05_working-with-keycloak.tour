@@ -21,39 +21,29 @@
     },
     {
       "title": "section 03",
-      "description": "# Creating a realm\n\n- A realm in Keycloak is an isolated namespace that manages a set of users, credentials, roles, and groups. It's the top-level organizational unit for managing authentication and authorization.\n\n\n\n"
-    },
-    {
-      "file": "Notes/Note.md",
-      "description": "Creating a Realm (Video)",
-      "line": 134
+      "description": "# Creating a realm\n\n- A realm in Keycloak is an isolated namespace that manages a set of users, credentials, roles, and groups. It's the top-level organizational unit for managing authentication and authorization.\n\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346574-creating-a-realm)\n\n"
     },
     {
       "title": "section 04",
-      "description": "# Creating users"
-    },
-    {
-      "file": "Notes/Note.md",
-      "description": "Creating Users (Video)",
-      "line": 142
+      "description": "# Creating users\n\n\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346578-creating-users)\n",
+      "selection": {
+        "start": {
+          "line": 5,
+          "character": 1
+        },
+        "end": {
+          "line": 6,
+          "character": 1
+        }
+      }
     },
     {
       "title": "section 05",
-      "description": "# Creating and assigning roles "
-    },
-    {
-      "file": "Notes/Note.md",
-      "description": "Creating and assigning roles to users (Video)",
-      "line": 149
+      "description": "# Creating and assigning roles \n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346586-creating-and-assigning-roles)\n"
     },
     {
       "title": "section 06",
-      "description": "Exporting the realm configuration "
-    },
-    {
-      "file": "Notes/Note.md",
-      "description": "Exporting the realm configuration",
-      "line": 156
+      "description": "Exporting the realm configuration \n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346590-exporting-the-realm-configuration)"
     }
   ],
   "ref": "Notes"

@@ -4,12 +4,30 @@
   "steps": [
     {
       "title": "Objective",
-      "description": "Module objectives\n• Configure multiple authentication schemes\n• Configure Keycloak as an authentication provider\n• Use Keycloak JWT tokens to access backend APIs\n• Diagnose JWT authentication and authorization issues\n• Configure Keycloak's role claim\n• Transform Keycloak claims\n• Load authentication scheme from appsettings.json"
+      "description": "Module objectives\n\n- Configure multiple authentication schemes\n- Configure Keycloak as an authentication provider\n- Use Keycloak JWT tokens to access backend APIs\n- Diagnose JWT authentication and authorization issues\n- Configure Keycloak's role claim\n- Transform Keycloak claims\n- Load authentication scheme from appsettings.json"
     },
     {
-      "file": "Notes/Note.md",
+      "title": "Section 1",
+      "description": "Configuring a Keycloak authentication scheme\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61347264-configuring-a-keycloak-authentication-scheme)"
+    },
+    {
+      "file": "Notes/05_Using Keycloak JWTs in ASP.NET Core/Lesson08.01/src/GameStore.Api/Shared/Authorization/Schemes.cs",
       "description": "",
-      "line": 204
+      "line": 6
+    },
+    {
+      "file": "Notes/05_Using Keycloak JWTs in ASP.NET Core/Lesson08.01/src/GameStore.Api/Shared/Authorization/ClaimTypes.cs",
+      "description": "",
+      "line": 3
+    },
+    {
+      "file": "Notes/05_Using Keycloak JWTs in ASP.NET Core/Lesson08.01/src/GameStore.Api/Program.cs",
+      "description": "",
+      "line": 45
+    },
+    {
+      "title": "section 2",
+      "description": "Receiving Keycloak JWTs in protected endpoints\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61347309-receiving-keycloak-jwts-in-protected-endpoints)"
     }
   ],
   "ref": "Notes"

@@ -12,29 +12,24 @@
       "line": 126
     },
     {
-      "file": "Notes/Note.md",
-      "description": "Configuring a client in Keycloak",
-      "line": 164
+      "title": "section 1",
+      "description": "Configuring a client in Keycloak\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346675-configuring-a-client-in-keycloak)\n"
     },
     {
-      "file": "Notes/Note.md",
-      "description": "Requesting access tokens from keycloak",
-      "line": 172
+      "title": "section 2",
+      "description": "Requesting access tokens from Keycloak \n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346875-requesting-access-tokens-from-keycloak)"
     },
     {
-      "file": "Notes/Note.md",
-      "description": "Configuring scopes and audiences in Keycloak \n\n",
-      "line": 179
+      "title": "section 3",
+      "description": "Configuring scopes and audience in Keycloak\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346895-configuring-scopes-and-audience-in-keycloak)"
     },
     {
-      "file": "Notes/Note.md",
-      "description": "Using refresh tokens to get an access token",
-      "line": 186
+      "title": "Using refresh tokens",
+      "description": "Using refresh tokens\n\n[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346904-using-refresh-tokens)"
     },
     {
-      "file": "Notes/Note.md",
-      "description": "Getting access tokens in Postman",
-      "line": 194
+      "title": "Getting access tokens in Postman",
+      "description": "[Watch video on DotNet Academy](https://learn.dotnetacademy.io/courses/take/aspnet-core-security/lessons/61346967-getting-access-tokens-in-postman)"
     }
   ],
   "ref": "Notes"
