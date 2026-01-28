@@ -30,6 +30,11 @@
       "file": "Notes/Note.md",
       "description": "Using refresh tokens to get an access token",
       "line": 186
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "Getting access tokens in Postman",
+      "line": 194
     }
   ],
   "ref": "Notes"

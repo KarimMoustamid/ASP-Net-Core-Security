@@ -1,6 +1,16 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "07_Using Keycloak JWTs in ASP.NET Core",
-  "steps": [],
+  "steps": [
+    {
+      "title": "Objective",
+      "description": "Module objectives\n• Configure multiple authentication schemes\n• Configure Keycloak as an authentication provider\n• Use Keycloak JWT tokens to access backend APIs\n• Diagnose JWT authentication and authorization issues\n• Configure Keycloak's role claim\n• Transform Keycloak claims\n• Load authentication scheme from appsettings.json"
+    },
+    {
+      "file": "Notes/Note.md",
+      "description": "",
+      "line": 204
+    }
+  ],
   "ref": "Notes"
 }

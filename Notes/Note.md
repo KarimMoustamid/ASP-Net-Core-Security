@@ -198,3 +198,21 @@ The issue :
    Your browser does not support the video tag.
 </video>
 
+
+## Section: Using Keycloak JWTs in ASP.NET Core
+
+### Configuring a Keycloak authentication scheme
+
+### Receiving Keycloak JWTs in protected endpoints
+
+### Logging JWT events
+
+### Configuring the role claim in Keycloak
+
+### Implementing a claims transformer
+
+### Refactoring the authentication configuration
+
+### Using Keycloak's email claim
+
+### Knowledge check
